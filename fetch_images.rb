@@ -9,7 +9,9 @@ image_array = URI.extract(html).select{ |l| l[/\.(?:gif|png|jpg)\b/]}
 puts image_array.length
 today = `date`
 image_array.each do |i|
-	tmp = 'curl -O "' + i + '"'
-	puts tmp.to_s
-	system tmp
+	unless i.nil?
+		tmp = 'curl -O "' + i + '"'
+		puts tmp.to_s
+		system tmp
+	end
 end
